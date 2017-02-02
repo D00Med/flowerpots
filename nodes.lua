@@ -56,6 +56,14 @@ minetest.register_node("flowerpots:flower_pot", {
 	end,
 })
 
+minetest.register_craft({
+	output = 'flowerpots:flower_pot',
+	recipe = {
+		{'default:clay', 'default:dirt', 'default:clay'},
+		{'', 'default:clay', ''},
+	}
+})
+
 for _, row in ipairs(flowers) do
 local flower = row[1]
 local flower_node = row[2]
