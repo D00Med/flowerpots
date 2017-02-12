@@ -38,7 +38,6 @@ minetest.register_node("flowerpots:flower_pot", {
 		"flowerpot.png",
 	},
 	visual_scale = 0.5,
-	wield_image = "flowerpot_item.png",
 	wield_scale = {x=1.0, y=1.0, z=1.0},
 	paramtype = "light",
 	selection_box = {
@@ -49,8 +48,7 @@ minetest.register_node("flowerpots:flower_pot", {
 		type = "fixed",
 		fixed = {-0.2, -0.5, -0.2, 0.2, -0.1, 0.2}
 	},
-	inventory_image = "flowerpot_item.png",
-	groups = {cracky = 2, stone = 1},
+	groups = {cracky = 1, oddly_breakable_by_hand = 1, attached_node=1},
 	sounds = default.node_sound_stone_defaults(),
 	on_rightclick = function(pos, node, clicker, itemstack)
 		local item = clicker:get_wielded_item():get_name()
@@ -58,16 +56,20 @@ minetest.register_node("flowerpots:flower_pot", {
 			local flower = row[1]
 			local flower_node = row[2]
 			if item == flower_node then
-				minetest.env:set_node(pos, {name="flowerpots:flower_pot_"..flower})
+				minetest.set_node(pos, {name="flowerpots:flower_pot_"..flower})
+				if not minetest.setting_getbool("creative") then
 				itemstack:take_item()
+				end
 			end
 		end
 		for _, row in ipairs(cubes) do
 			local flower = row[1]
 			local flower_node = row[2]
 			if item == flower_node then
-				minetest.env:set_node(pos, {name="flowerpots:flower_pot_"..flower})
+				minetest.set_node(pos, {name="flowerpots:flower_pot_"..flower})
+				if not minetest.setting_getbool("creative") then
 				itemstack:take_item()
+				end
 			end
 		end
 	end,
@@ -87,14 +89,13 @@ local flower_node = row[2]
 local desc = row[3]
 local texture = minetest.registered_nodes[flower_node]["tiles"]
 minetest.register_node("flowerpots:flower_pot_"..flower, {
-	description = "Flower Pot With "..flower.."",
+	description = "Flower Pot With "..desc.."",
 	drawtype = "mesh",
 	mesh = "flowerpot.obj",
 	tiles = {
 		"[combine:32x32:0,0=flowerpot.png:0,0="..texture[1],
 	},
 	visual_scale = 0.5,
-	wield_image = "flowerpot_item.png",
 	wield_scale = {x=1.0, y=1.0, z=1.0},
 	paramtype = "light",
 	selection_box = {
@@ -105,29 +106,30 @@ minetest.register_node("flowerpots:flower_pot_"..flower, {
 		type = "fixed",
 		fixed = {-0.2, -0.5, -0.2, 0.2, -0.1, 0.2}
 	},
-	inventory_image = "flowerpot_item.png",
-	groups = {cracky = 2, stone = 1, not_in_creative_inventory=1},
+	groups = {cracky = 1, oddly_breakable_by_hand = 1, not_in_creative_inventory=1, attached_node=1},
 	sounds = default.node_sound_stone_defaults(),
 	on_rightclick = function(pos, item, clicker)
-		minetest.env:add_item({x=pos.x, y=pos.y+0.5, z=pos.z}, flower_node)
-		minetest.env:set_node(pos, {name="flowerpots:flower_pot"})
+		minetest.add_item({x=pos.x, y=pos.y+0.5, z=pos.z}, flower_node)
+		minetest.set_node(pos, {name="flowerpots:flower_pot"})
 	end,
+	drop = {
+	max_items = 2,items = {{items = {"flowerpots:flower_pot", flower_node},rarity = 1,},},
+	},
 })
 end
 
 for _, row in ipairs(cubes) do
 local flower = row[1]
 local flower_node = row[2]
-local model = row[3]
+local desc = row[3]
 minetest.register_node("flowerpots:flower_pot_"..flower, {
-	description = "Flower Pot With "..flower.."",
+	description = "Flower Pot With "..desc.."",
 	drawtype = "mesh",
 	mesh = "flowerpot_with_long_cube.obj",
 	tiles = {
 		"flowerpot_"..flower..".png",
 	},
 	visual_scale = 0.5,
-	wield_image = "flowerpot_item.png",
 	wield_scale = {x=1.0, y=1.0, z=1.0},
 	paramtype = "light",
 	selection_box = {
@@ -138,12 +140,14 @@ minetest.register_node("flowerpots:flower_pot_"..flower, {
 		type = "fixed",
 		fixed = {-0.2, -0.5, -0.2, 0.2, -0.1, 0.2}
 	},
-	inventory_image = "flowerpot_item.png",
-	groups = {cracky = 2, stone = 1, not_in_creative_inventory=1},
+	groups = {cracky = 1, oddly_breakable_by_hand = 1, not_in_creative_inventory=1, attached_node=1},
 	sounds = default.node_sound_stone_defaults(),
 	on_rightclick = function(pos, item, clicker)
-		minetest.env:add_item({x=pos.x, y=pos.y+0.5, z=pos.z}, flower_node)
-		minetest.env:set_node(pos, {name="flowerpots:flower_pot"})
+		minetest.add_item({x=pos.x, y=pos.y+0.5, z=pos.z}, flower_node)
+		minetest.set_node(pos, {name="flowerpots:flower_pot"})
 	end,
+	drop = {
+	max_items = 2,items = {{items = {"flowerpots:flower_pot", flower_node},rarity = 1,},},
+	},
 })
 end
