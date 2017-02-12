@@ -17,6 +17,7 @@ local flowers = {
 	{"aspen_sapling", "default:aspen_sapling", "Aspen Sapling"},
 	{"junglesapling", "default:junglesapling", "Jungle Sapling"},
 	{"pine_sapling", "default:pine_sapling", "Pine Sapling"},
+	{"junglegrass", "default:junglegrass", "junglegrass"},
 
 }
 
@@ -27,6 +28,8 @@ local cubes = {
 	{"pine_needles", "default:pine_needles", "Pine Needles"},
 	{"jungleleaves", "default:jungleleaves", "Jungle Leaves"},
 	{"acacia_leaves", "default:acacia_leaves", "Acacia Leaves"},
+	{"bush_leaves", "default:bush_leaves", "Bush Leaves"},
+	{"acacia_bush_leaves", "default:acacia_bush_leaves", "Acacia Bush Leaves"},
 
 }
 
