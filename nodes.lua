@@ -114,11 +114,11 @@ minetest.register_node("flowerpots:flower_pot_"..flower, {
 	paramtype = "light",
 	selection_box = {
 		type = "fixed",
-		fixed = {-0.2, -0.5, -0.2, 0.2, -0.1, 0.2}
+		fixed = {-0.2, -0.5, -0.2, 0.2, -0.1, 0.2},
 	},
 	collision_box = {
 		type = "fixed",
-		fixed = {-0.2, -0.5, -0.2, 0.2, -0.1, 0.2}
+		fixed = {-0.2, -0.5, -0.2, 0.2, -0.1, 0.2},
 	},
 	groups = {cracky = 1, oddly_breakable_by_hand = 1, not_in_creative_inventory=1, attached_node=1},
 	sounds = default.node_sound_stone_defaults(),
