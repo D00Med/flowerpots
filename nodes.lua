@@ -71,7 +71,7 @@ minetest.register_node("flowerpots:flower_pot", {
 			local flower_node = row[2]
 			if item == flower_node then
 				minetest.set_node(pos, {name="flowerpots:flower_pot_"..flower})
-				if not minetest.setting_getbool("creative") then
+				if not minetest.settings:get_bool("creative") then
 				itemstack:take_item()
 				end
 			end
@@ -81,7 +81,7 @@ minetest.register_node("flowerpots:flower_pot", {
 			local flower_node = row[2]
 			if item == flower_node then
 				minetest.set_node(pos, {name="flowerpots:flower_pot_"..flower})
-				if not minetest.setting_getbool("creative") then
+				if not minetest.settings:get_bool("creative") then
 				itemstack:take_item()
 				end
 			end
