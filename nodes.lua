@@ -1,29 +1,24 @@
 
 local flowers = {
-	{"lavender", "mapgen:lavender_flower", "Lavender"},
 	{"rose", "flowers:rose", "Rose"},
 	{"tulip", "flowers:tulip", "Tulip"},
 	{"geranium", "flowers:geranium", "Geranium"},
 	{"viola", "flowers:viola", "Viola"},
 	{"dandelion_yellow", "flowers:dandelion_yellow", "Yellow Dandelion"},
 	{"dandelion_white", "flowers:dandelion_white", "White Dandelion"},
-	{"flame_lily", "mapgen:flame_lily", "Flame Lily"},
 	{"mushroom_brown", "flowers:mushroom_brown", "Brown Mushroom"},
 	{"mushroom_red", "flowers:mushroom_red", "Red Mushroom"},
 	{"grass", "default:grass_1", "Grass"},
 	{"dry_grass", "default:dry_grass_1", "Dry Grass"},
 	{"dry_shrub", "default:dry_shrub", "Dry Shrub"},
 	{"papyrus", "default:papyrus", "Papyrus"},
-	{"small_cactus", "mapgen:small_cactus", "Small Cactus"},
-	{"small_cactus_1", "mapgen:small_cactus_1", "Small Cactus1"},
-	{"oxeye_daisy", "mapgen:oxeye_daisy", "Oxeye Daisy"},
-	{"dead_grass", "mapgen:dead_grass_5", "Dead Grass"},
-	{"jungle_grass", "mapgen:jungle_grass_5", "Jungle Grass"},
 	{"sapling", "default:sapling", "Sapling"},
 	{"acacia_sapling", "default:acacia_sapling", "Acacia Sapling"},
 	{"aspen_sapling", "default:aspen_sapling", "Aspen Sapling"},
 	{"junglesapling", "default:junglesapling", "Jungle Sapling"},
 	{"pine_sapling", "default:pine_sapling", "Pine Sapling"},
+	{"pine_sapling", "default:bush_sapling", "Bush Sapling"},
+	{"pine_sapling", "default:acacia_bush_sapling", "Acacia Bush Sapling"},
 	{"junglegrass", "default:junglegrass", "junglegrass"},
 
 }
@@ -37,10 +32,6 @@ local cubes = {
 	{"acacia_leaves", "default:acacia_leaves", "Acacia Leaves"},
 	{"bush_leaves", "default:bush_leaves", "Bush Leaves"},
 	{"acacia_bush_leaves", "default:acacia_bush_leaves", "Acacia Bush Leaves"},
-	{"willow_leaves", "mapgen:willow_leaves", "Willow Leaves"},
-	{"baobab_leaves", "mapgen:baobab_leaves", "Baobab Leaves"},
-	{"yellow_ipe_leaves", "mapgen:yellow_ipe_leaves", "Yellow Ipe Leaves"},
-	{"palm_leaves", "mapgen:palm_leaves", "Palm Leaves"},
 
 }
 
@@ -107,7 +98,7 @@ minetest.register_node("flowerpots:flower_pot_"..flower, {
 	drawtype = "mesh",
 	mesh = "flowerpot.obj",
 	tiles = {
-		"[combine:32x32:0,0=flowerpot.png:0,0="..texture[1],
+		"[combine:32x32:0,0=flowerpot.png:0,0="..texture[1].."^[mask:flowerpot_mask.png",
 	},
 	visual_scale = 0.5,
 	wield_scale = {x=1.0, y=1.0, z=1.0},
